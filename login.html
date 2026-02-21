@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | OM Global Trading Academy</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+
+<div class="login-container">
+  <h1 class="logo-text">OM Global Trading Academy</h1>
+  <!-- <p class="subtitle">Built on Structure. Driven by Discipline.</p> -->
+
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
+
+  <button onclick="login()" class="enter-btn">Enter Academy</button>
+  <p id="errorMsg"></p>
+</div>
+
+<script>
+const validUsername = "OM";
+const validPassword = "123";
+
+function login() {
+  const u = document.getElementById("username").value;
+  const p = document.getElementById("password").value;
+  if (u === validUsername && p === validPassword) {
+    localStorage.setItem("loggedIn", "true");
+    window.location.href = "index.html";
+  } else {
+    document.getElementById("errorMsg").textContent = "Invalid credentials";
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OM Global Trading Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="brand">
+    <h1>OM Global Trading Academy</h1>
+    <p class="tagline">Built on Structure. Driven by Discipline.</p>
+  </div>
+
+  <div class="nav-actions">
+    <input type="text" id="searchInput" placeholder="🔍 Search lessons..." autocomplete="off">
+    <div id="searchInfo" class="search-info"></div>
+
+    <button type="button" class="theme-toggle" onclick="toggleTheme()" title="Toggle day/night">
+      <span class="theme-icon theme-day" aria-hidden="true">☀️</span>
+      <span class="theme-icon theme-night" aria-hidden="true">🌙</span>
+    </button>
+
+    <button type="button" onclick="logout()" class="logout-btn">Logout</button>
+  </div>
+</header>
+
+<main>
+  <section id="videoGrid" class="video-grid"></section>
+</main>
+
+<div id="playerModal" class="modal hidden">
+  <div class="modal-box">
+    <span class="close-btn" onclick="closePlayer()">×</span>
+    <div id="videoPlayer"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
