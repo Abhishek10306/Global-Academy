@@ -114,6 +114,36 @@ input {
   opacity: 0.9;
 }
 
+/* Cast button (Chromecast launcher + Cast page) */
+.cast-btn-wrap {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 4px;
+}
+.cast-btn-wrap google-cast-launcher {
+  width: 36px;
+  height: 36px;
+  --connected-color: var(--gold);
+  --disconnected-color: rgba(212, 175, 55, 0.8);
+}
+.cast-page-btn {
+  flex-shrink: 0;
+  padding: 6px 10px;
+  margin-right: 8px;
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--gold);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.cast-page-btn:hover {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: rgba(212, 175, 55, 0.6);
+}
+
 #searchInput {
   padding: 8px;
   border-radius: 6px;
@@ -206,15 +236,53 @@ input {
   padding: 25px;
   border-radius: 12px;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .close-btn {
   position: absolute;
   top: 10px;
-  right: 20px;
+  right: 45px;
   font-size: 26px;
   color: var(--gold);
   cursor: pointer;
+  z-index: 2;
+}
+
+.fullscreen-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 22px;
+  color: var(--gold);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+  padding: 4px;
+  line-height: 1;
+}
+
+.fullscreen-btn:hover {
+  opacity: 0.85;
+}
+
+.modal-box #videoPlayer {
+  flex: 1;
+  min-height: 0;
+}
+
+.modal-box.is-fullscreen #videoPlayer,
+.modal-box:fullscreen #videoPlayer {
+  flex: 1;
+  height: 100%;
+}
+
+.modal-box.is-fullscreen iframe,
+.modal-box:fullscreen iframe {
+  height: 100%;
+  min-height: 400px;
 }
 
 iframe {

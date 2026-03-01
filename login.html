@@ -5,8 +5,80 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login | OM Global Trading Academy</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="login.css">
 </head>
 <body class="login-body">
+
+<!-- World map animation: same hero as omglobaltrade.com. Use image from their site: save as assets/earth-night.jpg -->
+<div class="login-bg" aria-hidden="true">
+  <!-- Local image (download from omglobaltrade.com hero and save as assets/earth-night.jpg). Fallback: NASA Earth at night. -->
+  <img class="login-bg-image" src="assets/earth-night.jpg" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'; document.getElementById('login-bg-fallback').style.display='block';">
+  <div id="login-bg-fallback" class="login-bg-image login-bg-fallback" style="display:none; background-image: url('https://eoimages.gsfc.nasa.gov/images/imagerecords/144000/144898/earth_lights_lrg.jpg');"></div>
+  <svg class="login-map-svg" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- Soft glow like omglobaltrade.com hero -->
+      <filter id="node-glow" x="-80%" y="-80%" width="260%" height="260%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="2.8" result="blur"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+      <filter id="line-glow" x="-15%" y="-15%" width="130%" height="130%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="blur"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+      <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="rgba(255,255,255,0.12)"/>
+        <stop offset="50%" stop-color="rgba(210,230,255,0.45)"/>
+        <stop offset="100%" stop-color="rgba(255,255,255,0.12)"/>
+      </linearGradient>
+    </defs>
+    <!-- Connection lines – glow layer (blurred behind) -->
+    <g filter="url(#line-glow)">
+      <path class="connection-line connection-line-glow" d="M 200 220 Q 350 180 520 200"/>
+      <path class="connection-line connection-line-glow" d="M 260 280 Q 420 260 620 270"/>
+      <path class="connection-line connection-line-glow" d="M 520 200 Q 620 220 740 240"/>
+      <path class="connection-line connection-line-glow" d="M 540 240 Q 680 220 820 260"/>
+      <path class="connection-line connection-line-glow" d="M 300 240 Q 500 200 680 300"/>
+      <path class="connection-line connection-line-glow" d="M 220 260 Q 380 320 520 320"/>
+      <path class="connection-line connection-line-glow" d="M 580 220 Q 660 260 780 280"/>
+      <path class="connection-line connection-line-glow" d="M 640 280 Q 720 280 860 260"/>
+      <path class="connection-line connection-line-glow" d="M 520 320 Q 620 340 800 280"/>
+      <path class="connection-line connection-line-glow" d="M 280 380 Q 480 360 680 320"/>
+      <path class="connection-line connection-line-glow" d="M 540 360 Q 720 340 880 380"/>
+      <path class="connection-line connection-line-glow" d="M 320 420 Q 600 380 860 400"/>
+    </g>
+    <!-- Connection lines (curved paths – main stroke) -->
+    <path class="connection-line" d="M 200 220 Q 350 180 520 200"/>
+    <path class="connection-line" d="M 260 280 Q 420 260 620 270"/>
+    <path class="connection-line" d="M 520 200 Q 620 220 740 240"/>
+    <path class="connection-line" d="M 540 240 Q 680 220 820 260"/>
+    <path class="connection-line" d="M 300 240 Q 500 200 680 300"/>
+    <path class="connection-line" d="M 220 260 Q 380 320 520 320"/>
+    <path class="connection-line" d="M 580 220 Q 660 260 780 280"/>
+    <path class="connection-line" d="M 640 280 Q 720 280 860 260"/>
+    <path class="connection-line" d="M 520 320 Q 620 340 800 280"/>
+    <path class="connection-line" d="M 280 380 Q 480 360 680 320"/>
+    <path class="connection-line" d="M 540 360 Q 720 340 880 380"/>
+    <path class="connection-line" d="M 320 420 Q 600 380 860 400"/>
+    <!-- City lights (small dots) – more visible on map -->
+    <g class="city-lights">
+      <circle class="city-light" cx="180" cy="220" r="0.5"/><circle class="city-light" cx="240" cy="200" r="0.45"/><circle class="city-light" cx="220" cy="260" r="0.5"/><circle class="city-light" cx="300" cy="240" r="0.45"/><circle class="city-light" cx="260" cy="280" r="0.5"/><circle class="city-light" cx="280" cy="200" r="0.4"/>
+      <circle class="city-light" cx="500" cy="180" r="0.5"/><circle class="city-light" cx="540" cy="200" r="0.45"/><circle class="city-light" cx="520" cy="240" r="0.5"/><circle class="city-light" cx="580" cy="220" r="0.45"/><circle class="city-light" cx="560" cy="260" r="0.4"/>
+      <circle class="city-light" cx="620" cy="260" r="0.5"/><circle class="city-light" cx="640" cy="280" r="0.45"/><circle class="city-light" cx="680" cy="300" r="0.5"/><circle class="city-light" cx="700" cy="320" r="0.45"/>
+      <circle class="city-light" cx="740" cy="220" r="0.5"/><circle class="city-light" cx="820" cy="240" r="0.45"/><circle class="city-light" cx="860" cy="260" r="0.5"/><circle class="city-light" cx="800" cy="280" r="0.45"/><circle class="city-light" cx="780" cy="300" r="0.4"/>
+      <circle class="city-light" cx="520" cy="320" r="0.5"/><circle class="city-light" cx="540" cy="360" r="0.45"/><circle class="city-light" cx="480" cy="340" r="0.5"/><circle class="city-light" cx="500" cy="380" r="0.4"/>
+      <circle class="city-light" cx="900" cy="380" r="0.5"/><circle class="city-light" cx="940" cy="360" r="0.45"/><circle class="city-light" cx="860" cy="400" r="0.4"/>
+      <circle class="city-light" cx="280" cy="380" r="0.5"/><circle class="city-light" cx="320" cy="420" r="0.45"/><circle class="city-light" cx="260" cy="400" r="0.4"/>
+    </g>
+    <!-- Glowing nodes at connection points (bright blue-white like reference) -->
+    <circle class="node-glow" cx="520" cy="200" r="2.8"/><circle class="node-glow" cx="740" cy="240" r="2.5"/><circle class="node-glow" cx="680" cy="300" r="2.8"/><circle class="node-glow" cx="820" cy="260" r="2.5"/><circle class="node-glow" cx="520" cy="320" r="2.8"/><circle class="node-glow" cx="860" cy="260" r="2.5"/><circle class="node-glow" cx="880" cy="380" r="2.5"/><circle class="node-glow" cx="320" cy="420" r="2.5"/>
+  </svg>
+</div>
 
 <div class="login-container">
   <h1 class="logo-text">OM Global Trading Academy</h1>

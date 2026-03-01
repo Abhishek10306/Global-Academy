@@ -1,0 +1,147 @@
+/* Login page – world map animation background */
+.login-body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  /* Light base so the image is clearly visible (no heavy dark overlay) */
+  background: #0a0e18;
+}
+
+/* Hero image – full visibility. Use assets/earth-night.jpg (download from omglobaltrade.com) */
+.login-bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 1;
+}
+
+/* Fallback when using background-image (NASA) */
+.login-bg-fallback {
+  background-size: cover;
+  background-position: center;
+  opacity: 1;
+}
+
+.login-bg-fallback.login-bg-image {
+  width: 100%;
+  height: 100%;
+}
+
+.login-map-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* City lights – same subtle pulse speed as reference */
+.login-map-svg .city-light {
+  fill: rgba(255, 250, 230, 0.92);
+  opacity: 0.8;
+  animation: cityPulse 4s ease-in-out infinite;
+}
+
+.login-map-svg .city-light:nth-child(odd) {
+  animation-delay: 0.5s;
+}
+
+@keyframes cityPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Connection lines – same speed and glow as omglobaltrade.com (slow, smooth flow) */
+.login-map-svg .connection-line-glow {
+  fill: none;
+  stroke: rgba(170, 210, 255, 0.35);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-dasharray: 18 28;
+  animation: lineFlow 24s linear infinite;
+}
+
+.login-map-svg .connection-line {
+  fill: none;
+  stroke: url(#line-grad);
+  stroke-width: 0.9;
+  stroke-linecap: round;
+  stroke-dasharray: 14 22;
+  animation: lineFlow 22s linear infinite;
+}
+
+/* Stagger delays – same feel as reference (spread out, calm) */
+.login-map-svg g .connection-line-glow:nth-child(4n + 1) { animation-delay: 0s; }
+.login-map-svg g .connection-line-glow:nth-child(4n + 2) { animation-delay: -5.5s; }
+.login-map-svg g .connection-line-glow:nth-child(4n + 3) { animation-delay: -11s; }
+.login-map-svg g .connection-line-glow:nth-child(4n + 4) { animation-delay: -16.5s; }
+.login-map-svg > path.connection-line:nth-child(3),
+.login-map-svg > path.connection-line:nth-child(7),
+.login-map-svg > path.connection-line:nth-child(11) { animation-delay: 0s; }
+.login-map-svg > path.connection-line:nth-child(4),
+.login-map-svg > path.connection-line:nth-child(8),
+.login-map-svg > path.connection-line:nth-child(12) { animation-delay: -5.5s; }
+.login-map-svg > path.connection-line:nth-child(5),
+.login-map-svg > path.connection-line:nth-child(9),
+.login-map-svg > path.connection-line:nth-child(13) { animation-delay: -11s; }
+.login-map-svg > path.connection-line:nth-child(6),
+.login-map-svg > path.connection-line:nth-child(10),
+.login-map-svg > path.connection-line:nth-child(14) { animation-delay: -16.5s; }
+
+@keyframes lineFlow {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -100; }
+}
+
+/* Glowing nodes – same soft glow and pulse speed as omglobaltrade.com */
+.login-map-svg .node-glow {
+  fill: rgba(215, 235, 255, 0.98);
+  filter: url(#node-glow);
+  transform-origin: center;
+  animation: nodePulse 3.5s ease-in-out infinite;
+}
+
+.login-map-svg .node-glow:nth-child(2n) {
+  animation-delay: 0.6s;
+}
+
+@keyframes nodePulse {
+  0%, 100% { opacity: 0.78; }
+  50% { opacity: 1; }
+}
+
+.login-container {
+  position: relative;
+  z-index: 1;
+  width: 360px;
+  padding: 40px;
+  background: rgba(17, 24, 39, 0.92);
+  border-radius: 14px;
+  text-align: center;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Ensure login-specific inputs/buttons still work */
+.login-body .logo-text {
+  color: var(--gold);
+}
+
+.login-body input,
+.login-body .enter-btn {
+  box-sizing: border-box;
+}
