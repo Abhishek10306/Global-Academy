@@ -71,8 +71,8 @@ function openPlayer(id) {
     clearTimeout(autoFullscreenTimer);
     autoFullscreenTimer = null;
   }
-  // Use both autoplay=1 and embedded=true for better TV/browser support
-  const embedUrl = `https://drive.google.com/file/d/${id}/preview?autoplay=1&embedded=true`;
+  // Use Google Drive preview embed
+  const embedUrl = `https://drive.google.com/file/d/${id}/preview?usp=drivesdk`;
   currentCastVideoUrl = embedUrl; // So Cast can send this to the TV
   document.getElementById("videoPlayer").innerHTML =
     `<iframe src="${embedUrl}" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
